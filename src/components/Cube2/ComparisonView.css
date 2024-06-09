@@ -1,0 +1,77 @@
+.comparison-view {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-button {
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    background-color: #45a049;
+}
+
+.comparison-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th, .comparison-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.comparison-table th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+
+.comparison-table td {
+    background-color: #ffffff;
+    color: #333;
+}
+
+body.cube2-dark-mode .comparison-view {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.cube2-dark-mode .back-button {
+    background-color: #333;
+}
+
+body.cube2-dark-mode .back-button:hover {
+    background-color: #555;
+}
+
+body.cube2-dark-mode .comparison-table th {
+    background-color: #333;
+    color: #ffffff;
+}
+
+body.cube2-dark-mode .comparison-table td {
+    background-color: #444;
+    color: #ffffff;
+}

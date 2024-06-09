@@ -1,0 +1,328 @@
+.cube2-project-showcase {
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Light Mode Background */
+.cube2-light-mode {
+    background: linear-gradient(135deg, #e8f9fd 0%, #eef2f3 100%);
+    backdrop-filter: blur(10px);
+    animation: cube2-gradientShift 20s ease infinite;
+}
+
+/* Dark Mode Background */
+.cube2-project-showcase.cube2-dark-mode {
+    background: linear-gradient(135deg, #1a2a6c 0%, #000428 100%);
+    backdrop-filter: blur(10px);
+    animation: cube2-gradientShift 20s ease infinite;
+}
+
+/* Projects Container */
+.cube2-projects-container {
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    animation: cube2-fadeIn 0.5s ease-out;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Fade In Animation */
+@keyframes cube2-fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Gradient Shift Animation */
+@keyframes cube2-gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Heading */
+.cube2-projects-heading {
+    font-size: 2.5rem;
+    color: #2A4D69;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+@media (max-width: 600px) {
+    .cube2-projects-heading {
+        font-size: 2rem;
+    }
+}
+
+.cube2-project-showcase.cube2-dark-mode .cube2-projects-heading {
+    color: #ffffff;
+}
+
+/* Filter Container */
+.cube2-filter-container {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, backdrop-filter 0.3s;
+    margin-bottom: 20px;
+}
+
+/* Custom Checkbox */
+.cube2-custom-checkbox {
+    position: relative;
+    display: inline-block;
+    padding-left: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    user-select: none;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.cube2-custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.cube2-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cube2-custom-checkbox:hover input ~ .cube2-checkmark {
+    background-color: #ccc;
+    transform: scale(1.1);
+}
+
+.cube2-custom-checkbox input:checked ~ .cube2-checkmark {
+    background-color: #4CAF50;
+    transform: scale(1.1);
+}
+
+.cube2-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.cube2-custom-checkbox input:checked ~ .cube2-checkmark:after {
+    display: block;
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* Custom Select */
+.cube2-custom-select {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.cube2-custom-select select {
+    display: block;
+    padding: 10px;
+    font-size: 1rem;
+    color: #666;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.cube2-custom-select select:hover {
+    background-color: #f0f0f0;
+    border-color: #4CAF50;
+}
+
+/* Reset View and Dark Mode Toggle */
+.cube2-reset-view, .cube2-dark-mode-toggle {
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.cube2-reset-view:hover, .cube2-dark-mode-toggle:hover {
+    background-color: #45a049;
+}
+
+.cube2-reset-view {
+    position: fixed;
+    top: 20px;
+    height: 50px;
+    right: 20px;
+    z-index: 1000;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.cube2-dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 110px;
+    height: 60px;
+    z-index: 1000;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Canvas Background */
+#cube2-background-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Back Button */
+.cube2-back-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    height: 50px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.cube2-back-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.cube2-back-button:focus {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+/* Dark Mode Styles */
+body.cube2-dark-mode .cube2-filter-container select, 
+body.cube2-dark-mode .cube2-reset-view,
+body.cube2-dark-mode .cube2-dark-mode-toggle {
+    background-color: #2c2c2c;
+    color: white;
+    border: 1px solid #444;
+}
+
+body.cube2-dark-mode .cube2-reset-view:hover, 
+body.cube2-dark-mode .cube2-dark-mode-toggle:hover {
+    background-color: #3a3a3a;
+}
+
+body.cube2-dark-mode .cube2-dark-mode-toggle:hover {
+    background-color: #555;
+}
+
+body.cube2-dark-mode .cube2-custom-select select,
+body.cube2-dark-mode .cube2-custom-checkbox {
+    background-color: #444;
+    color: #ccc;
+    border-color: #666;
+}
+
+body.cube2-dark-mode .cube2-custom-select select:hover,
+body.cube2-dark-mode .cube2-custom-checkbox:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+body.cube2-dark-mode .cube2-custom-select select:active,
+body.cube2-dark-mode .cube2-custom-checkbox:active {
+    background-color: #666;
+}
+
+body.cube2-dark-mode .cube2-custom-checkbox input:checked ~ .cube2-checkmark {
+    background-color: #00bcd4;
+    border-color: #00bcd4;
+    color: #fff;
+}
+
+body.cube2-dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.cube2-dark-mode .cube2-projects-heading {
+    color: #ffffff;
+}
+
+body.cube2-dark-mode .cube2-project-showcase {
+    background-color: #1e1e1e;
+}
+
+body.cube2-dark-mode .cube2-project-card {
+    background-color: rgba(44, 44, 44, 0.6);
+    color: #ffffff;
+}
+
+body.cube2-dark-mode .cube2-project-card h3 {
+    color: #ffffff;
+}
+
+body.cube2-dark-mode .cube2-project-card p, 
+body.cube2-dark-mode .cube2-project-card li {
+    color: #cccccc;
+}
+
+body.cube2-dark-mode .cube2-filter-container select:focus, 
+body.cube2-dark-mode .cube2-reset-view:focus,
+body.cube2-dark-mode .cube2-dark-mode-toggle:focus {
+    border-color: #4CAF50;
+}
+
+body.cube2-dark-mode .cube2-reset-view:hover {
+    background-color: #45a049;
+}

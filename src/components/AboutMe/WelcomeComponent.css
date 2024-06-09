@@ -1,0 +1,76 @@
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.background-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.welcome-content {
+    z-index: 1;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    position: relative;
+    color: white;
+}
+
+h1 {
+    color: #FFEB3B; /* Modified to a softer yellow */
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.8); /* Enhanced glow effect */
+    font-size: 3rem;
+    animation: fadeInUp 0.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.navigation-buttons {
+    width: 100%; /* Full width to center buttons perfectly */
+    display: flex;
+    justify-content: center; /* Centering buttons */
+    gap: 10px;
+}
+
+
+button {
+    padding: 12px 24px; /* Larger buttons for easier interaction */
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #2979ff; /* More vibrant blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+
+    &:hover {
+        background-color: #1565c0; /* Deeper blue on hover */
+        transform: translateY(-2px); /* Slight raise effect on hover */
+    }
+}

@@ -1,0 +1,50 @@
+.hero {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.project-tooltip {
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.skill-section {
+  position: absolute;
+  top: 100vh;  
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+}
+
+.cta-section {
+  position: absolute;
+  top: 200vh; 
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background: #f0f0f0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-content {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+

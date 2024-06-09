@@ -1,0 +1,35 @@
+.personal-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  color: #CCD6F6;
+  background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
+}
+.personal-intro h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+.personal-intro p {
+  font-size: 1.5rem;
+  width: 60%;
+  margin: auto;
+}
+.details span {
+  display: block;
+  margin-top: 20px;
+}
+.details button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ff4081;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.details button:hover {
+  background-color: #f50057;
+}

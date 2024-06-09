@@ -1,0 +1,39 @@
+.skill-bar {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.skill-bar:hover {
+    transform: scale(1.05);
+}
+
+.skill-bar-label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: #333;
+    z-index: 1;
+}
+
+.skill-bar-level {
+    height: 30px;
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    transition: width 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    border-radius: 10px 0 0 10px;
+}
+
+.skill-bar-percentage {
+    color: #fff;
+    font-weight: bold;
+}

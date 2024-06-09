@@ -1,0 +1,23 @@
+.node-info {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: none; /* Start as hidden */
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 100; 
+}
+.node-info h2, .node-info p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Show the tooltip only when hovering over the node */
+.mesh {
+    cursor: pointer;
+} 
+.mesh:hover + .node-info {
+    display: block;
+}

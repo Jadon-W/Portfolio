@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomeHero from './components/HomeHero';
+import CustomCursor from './CustomCursor';
+import AboutMe from './components/AboutMe/AboutMe';  
+import Cube2Projects from './components/Cube2/Cube2Projects';
+import Cube3 from './components/Cube3/Cube3';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <CustomCursor />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<HomeHero />} />
+          <Route path="/about-me" element={<AboutMe />} />  
+          <Route path="/projects" element={<Cube2Projects />} />
+          <Route path="/Cube3" element={<Cube3 />} />
+        </Routes>
+      </Suspense>
+    </Router>
   );
 }
 

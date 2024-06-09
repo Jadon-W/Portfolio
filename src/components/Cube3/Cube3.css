@@ -1,0 +1,126 @@
+.cube3-container {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    scroll-behavior: smooth;
+    transition: background 1s ease, transform 1s ease;
+    background: linear-gradient(135deg, #e8f9fd 0%, #eef2f3 100%);
+    color: #000;
+    position: relative;
+}
+
+.cube3-container.problemSolving {
+    background: linear-gradient(135deg, #e8f9fd 0%, #b2f5ea 100%);
+    
+}
+
+.cube3-container.techStackExplorer {
+    background: linear-gradient(135deg, #b2f5ea 0%, #eef2f3 100%);
+    
+}
+
+.cube3-nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cube3-nav:hover {
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.cube3-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.cube3-nav button {
+    color: #ffffff;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.cube3-nav button:hover {
+    color: #00bcd4;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.cube3-nav .active button {
+    color: #00bcd4;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #00bcd4;
+}
+
+.cube3-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.cube3-section h1 {
+    font-size: 2.5rem;
+    color: #2A4D69;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #00bcd4;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top:hover {
+    background: #0097a7;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.back-to-top:focus {
+    outline: none;
+}

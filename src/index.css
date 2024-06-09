@@ -1,13 +1,137 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Custom styles */
+
+
+h1, h2, h3 {
+  color: #64FFDA;
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
+
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Ensures no scrolling occurs outside your defined containers */
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.hero {
+  cursor: none;
+    display: flex; /* Enable flexbox */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    min-height: 100vh; /* Minimum height to fill the viewport */
+    width: 100%; /* Full width */
+    background: linear-gradient(135deg, #1c1c1c 0%, #0a0a0a 100%);
+    overflow: hidden; /* Hide overflow */
+}
+
+
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  z-index: 1000; 
+  transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-cursor.clicking {
+  transform: translate(-50%, -50%) scale(1.8); /* Larger scale */
+  background-color: rgba(0, 255, 255, 0.75); /* Cyan for visibility */
+  box-shadow: 0 0 20px 10px rgba(0, 255, 255, 0.75); /* Enhanced glowing effect */
+}
+
+.custom-cursor.hidden {
+  display: none;
+}
+
+.custom-cursor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  background: rgba(0, 191, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s, opacity 0.5s;
+  opacity: 0;
+}
+
+.custom-cursor:hover::after {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 1;
+}
+
+.particle {
+  position: fixed;
+  pointer-events: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 1); /* More intense and brighter glow */
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+  z-index: 10000;
+}
+
+.particle-animation {
+  transform: translate(-50%, -50%) scale(0); /* Begin tiny to grow */
+  opacity: 1; /* Fade in */
+}
+
+.project-tooltip {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Make the transition visually impressive */
+.transition-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.transition-screen.active {
+  opacity: 0.75;
+  pointer-events: all;
+}
+

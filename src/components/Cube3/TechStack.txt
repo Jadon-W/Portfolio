@@ -1,0 +1,11 @@
+import React from 'react';
+
+const TechStack = () => {
+    return (
+        <div>
+            <p>Placeholder for TechStack component</p>
+        </div>
+    );
+};
+
+export default TechStack;

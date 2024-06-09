@@ -1,0 +1,23 @@
+.timeline {
+  background: #0A192F;
+  color: #CCD6F6;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.timeline-entry {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.timeline-entry:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
