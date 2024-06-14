@@ -11,12 +11,13 @@
     height: 100%;
     width: 100%;
     z-index: 1;
-    perspective: 1000px; 
+    perspective: 1000px;
 }
+
 .personal-insights-container.dark-mode {
     background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
 }
-/* Animated Gradient Background */
+
 .animated-gradient-background {
     position: absolute;
     top: 0;
@@ -30,28 +31,21 @@
 }
 
 .personal-insights-container.dark-mode .animated-gradient-background {
-    background: linear-gradient(270deg, #000428 0%, #004e92 100%, #1a2a6c 50%);
+    background: linear-gradient(270deg, #000428 0%, #004e92 100%);
     animation: gradientAnimationDark 20s ease infinite;
 }
+
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Floating Elements */
 @keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
 }
-
 
 .shape {
     position: absolute;
@@ -61,78 +55,33 @@
     pointer-events: none;
 }
 
-.shape.small {
-    width: 50px;
-    height: 50px;
-    bottom: 10%;
-    left: 20%;
-    animation-duration: 4s;
-}
+.shape.small { width: 50px; height: 50px; bottom: 10%; left: 20%; animation-duration: 4s; }
+.shape.medium { width: 100px; height: 100px; bottom: 30%; left: 70%; }
+.shape.large { width: 150px; height: 150px; top: 20%; right: 10%; }
+.shape.extra-small { width: 30px; height: 30px; top: 15%; left: 40%; animation-duration: 3s; }
+.shape.extra-large { width: 200px; height: 200px; bottom: 5%; right: 15%; animation-duration: 7s; }
 
-.shape.medium {
-    width: 100px;
-    height: 100px;
-    bottom: 30%;
-    left: 70%;
-}
-
-.shape.large {
-    width: 150px;
-    height: 150px;
-    top: 20%;
-    right: 10%;
-}
-
-/* Additional Shapes */
-.shape.extra-small {
-    width: 30px;
-    height: 30px;
-    top: 15%;
-    left: 40%;
-    animation-duration: 3s;
-}
-
-.shape.extra-large {
-    width: 200px;
-    height: 200px;
-    bottom: 5%;
-    right: 15%;
-    animation-duration: 7s;
-}
-
-/* Starry Night Elements */
 @keyframes twinkle {
     0% { opacity: 0.5; }
     50% { opacity: 1; }
     100% { opacity: 0.5; }
 }
 
-/* Star Sparkle Animation */
 @keyframes sparkle {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); }
 }
+
 @keyframes gradientAnimationDark {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-/* Base Star Style */
+
 .star {
     position: absolute;
     background: radial-gradient(circle, #ffeb3b 30%, #f1c40f 100%);
-    clip-path: polygon(
-        50% 0%,
-        61% 35%,
-        98% 35%,
-        68% 57%,
-        79% 91%,
-        50% 70%,
-        21% 91%,
-        32% 57%,
-        2% 35%,
-        39% 35%
-    );
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     animation: twinkle 3s infinite ease-in-out alternate, sparkle 2.5s infinite ease-in-out, float 6s ease-in-out infinite;
     box-shadow: 0 0 10px rgba(255, 235, 59, 0.8), 0 0 20px rgba(241, 196, 15, 0.5);
     border: 2px solid #f39c12;
@@ -140,7 +89,6 @@
     overflow: hidden;
 }
 
-/* Inner Glow */
 .star::before {
     content: '';
     position: absolute;
@@ -154,7 +102,6 @@
     z-index: 1;
 }
 
-/* Texture and Detail */
 .star::after {
     content: '';
     position: absolute;
@@ -169,350 +116,39 @@
     z-index: 0;
 }
 
-/* Small Stars */
-.star-small {
-    width: 10px;
-    height: 10px;
-    top: 20%;
-    left: 30%;
+.star-small { width: 10px; height: 10px; top: 20%; left: 30%; }
+.star-extra-small { width: 8px; height: 8px; top: 25%; left: 15%; }
+.star-medium { width: 15px; height: 15px; top: 50%; left: 60%; }
+.star-large { width: 20px; height: 20px; top: 70%; left: 20%; }
+.star-extra-large { width: 25px; height: 25px; top: 40%; left: 80%; }
+
+.star-1 { width: 12px; height: 12px; top: 10%; left: 50%; }
+/* Add additional star sizes here... */
+
+@keyframes glow {
+    0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3); }
+    100% { box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.7), 0 0 60px rgba(255, 255, 255, 0.5); }
 }
 
-.star-extra-small {
-    width: 8px;
-    height: 8px;
-    top: 25%;
-    left: 15%;
-}
-
-/* Medium Stars */
-.star-medium {
-    width: 15px;
-    height: 15px;
-    top: 50%;
-    left: 60%;
-}
-
-.star-1 {
-    width: 12px;
-    height: 12px;
-    top: 10%;
-    left: 50%;
-}
-
-/* Large Stars */
-.star-large {
-    width: 20px;
-    height: 20px;
-    top: 70%;
-    left: 20%;
-}
-
-.star-extra-large {
-    width: 25px;
-    height: 25px;
-    top: 40%;
-    left: 80%;
-}
-
-/* Additional Stars */
-.star-2 {
-    width: 18px;
-    height: 18px;
-    top: 30%;
-    left: 70%;
-}
-
-.star-3 {
-    width: 22px;
-    height: 22px;
-    top: 80%;
-    left: 40%;
-}
-
-.star-4 {
-    width: 10px;
-    height: 10px;
-    top: 15%;
-    left: 60%;
-}
-
-.star-5 {
-    width: 20px;
-    height: 20px;
-    top: 60%;
-    left: 10%;
-}
-
-.star-6 {
-    width: 15px;
-    height: 15px;
-    top: 50%;
-    left: 20%;
-}
-
-.star-7 {
-    width: 12px;
-    height: 12px;
-    top: 70%;
-    left: 50%;
-}
-
-.star-8 {
-    width: 18px;
-    height: 18px;
-    top: 85%;
-    left: 70%;
-}
-
-.star-9 {
-    width: 25px;
-    height: 25px;
-    top: 45%;
-    left: 90%;
-}
-
-.star-10 {
-    width: 14px;
-    height: 14px;
-    top: 15%;
-    left: 35%;
-}
-
-.star-11 {
-    width: 16px;
-    height: 16px;
-    top: 25%;
-    left: 55%;
-}
-
-.star-12 {
-    width: 20px;
-    height: 20px;
-    top: 45%;
-    left: 75%;
-}
-
-.star-13 {
-    width: 18px;
-    height: 18px;
-    top: 65%;
-    left: 25%;
-}
-
-.star-14 {
-    width: 12px;
-    height: 12px;
-    top: 75%;
-    left: 15%;
-}
-
-.star-15 {
-    width: 15px;
-    height: 15px;
-    top: 85%;
-    left: 45%;
-}
-
-.star-16 {
-    width: 22px;
-    height: 22px;
-    top: 30%;
-    left: 20%;
-}
-
-.star-17 {
-    width: 10px;
-    height: 10px;
-    top: 10%;
-    left: 50%;
-}
-
-.star-18 {
-    width: 18px;
-    height: 18px;
-    top: 40%;
-    left: 70%;
-}
-
-.star-19 {
-    width: 25px;
-    height: 25px;
-    top: 55%;
-    left: 90%;
-}
-
-.star-20 {
-    width: 12px;
-    height: 12px;
-    top: 70%;
-    left: 50%;
-}
-
-.star-21 {
-    width: 14px;
-    height: 14px;
-    top: 35%;
-    left: 40%;
-}
-
-.star-22 {
-    width: 16px;
-    height: 16px;
-    top: 60%;
-    left: 80%;
-}
-
-.star-23 {
-    width: 20px;
-    height: 20px;
-    top: 85%;
-    left: 60%;
-}
-
-.star-24 {
-    width: 10px;
-    height: 10px;
-    top: 20%;
-    left: 10%;
-}
-
-.star-25 {
-    width: 15px;
-    height: 15px;
-    top: 50%;
-    left: 30%;
-}
-
-.star-26 {
-    width: 14px;
-    height: 14px;
-    top: 10%;
-    left: 20%;
-}
-
-.star-27 {
-    width: 16px;
-    height: 16px;
-    top: 20%;
-    left: 70%;
-}
-
-.star-28 {
-    width: 20px;
-    height: 20px;
-    top: 30%;
-    left: 90%;
-}
-
-.star-29 {
-    width: 18px;
-    height: 18px;
-    top: 40%;
-    left: 10%;
-}
-
-.star-30 {
-    width: 12px;
-    height: 12px;
-    top: 60%;
-    left: 15%;
-}
-
-.star-31 {
-    width: 15px;
-    height: 15px;
-    top: 80%;
-    left: 25%;
-}
-
-.star-32 {
-    width: 22px;
-    height: 22px;
-    top: 90%;
-    left: 75%;
-}
-
-.star-33 {
-    width: 10px;
-    height: 10px;
-    top: 50%;
-    left: 85%;
-}
-
-.star-34 {
-    width: 18px;
-    height: 18px;
-    top: 15%;
-    left: 40%;
-}
-
-.star-35 {
-    width: 25px;
-    height: 25px;
-    top: 25%;
-    left: 60%;
-}
-
-.star-36 {
-    width: 12px;
-    height: 12px;
-    top: 35%;
-    left: 80%;
-}
-
-.star-37 {
-    width: 14px;
-    height: 14px;
-    top: 45%;
-    left: 50%;
-}
-
-.star-38 {
-    width: 16px;
-    height: 16px;
-    top: 65%;
-    left: 35%;
-}
-
-.star-39 {
-    width: 20px;
-    height: 20px;
-    top: 75%;
-    left: 55%;
-}
-
-.star-40 {
-    width: 22px;
-    height: 22px;
-    top: 85%;
-    left: 30%;
-}
-/* Adding additional glows and sparkles */
 .star::before,
 .star::after {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
     animation: glow 1.5s infinite alternate ease-in-out;
 }
 
-@keyframes glow {
-    0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3); }
-    100% { box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.7), 0 0 60px rgba(255, 255, 255, 0.5); }
-}
-/* Crescent Moon */
 .moon {
     position: absolute;
     top: 10%;
     right: 10%;
-    width: 100px; /* Larger size for better visual impact */
+    width: 100px;
     height: 100px;
     background: radial-gradient(circle at 30% 30%, #fffbcc, #f0e68c 40%, #ffcc00 60%, transparent 70%);
     border-radius: 50%;
     box-shadow: 0 0 15px 10px rgba(255, 204, 0, 0.5), 0 0 30px 20px rgba(255, 204, 0, 0.2);
     animation: float 6s ease-in-out infinite;
-    overflow: hidden; /* Ensure child elements don't overflow */
+    overflow: hidden;
 }
 
-/* Craters */
 .moon::before, .moon::after {
     content: '';
     position: absolute;
@@ -521,23 +157,9 @@
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Main Crater */
-.moon::before {
-    width: 20%;
-    height: 20%;
-    top: 30%;
-    left: 35%;
-}
+.moon::before { width: 20%; height: 20%; top: 30%; left: 35%; }
+.moon::after { width: 15%; height: 15%; top: 60%; left: 60%; }
 
-/* Secondary Crater */
-.moon::after {
-    width: 15%;
-    height: 15%;
-    top: 60%;
-    left: 60%;
-}
-
-/* Additional Small Craters */
 .moon .small-crater {
     position: absolute;
     border-radius: 50%;
@@ -545,28 +167,10 @@
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.moon .small-crater:nth-child(1) {
-    width: 10%;
-    height: 10%;
-    top: 20%;
-    left: 70%;
-}
+.moon .small-crater:nth-child(1) { width: 10%; height: 10%; top: 20%; left: 70%; }
+.moon .small-crater:nth-child(2) { width: 8%; height: 8%; top: 40%; left: 20%; }
+.moon .small-crater:nth-child(3) { width: 12%; height: 12%; top: 80%; left: 50%; }
 
-.moon .small-crater:nth-child(2) {
-    width: 8%;
-    height: 8%;
-    top: 40%;
-    left: 20%;
-}
-
-.moon .small-crater:nth-child(3) {
-    width: 12%;
-    height: 12%;
-    top: 80%;
-    left: 50%;
-}
-
-/* Soft Glow */
 .moon::after {
     content: '';
     position: absolute;
@@ -579,7 +183,7 @@
     animation: float 6s ease-in-out infinite;
     pointer-events: none;
 }
-/* Toggle Mode Button */
+
 .toggle-mode {
     position: absolute;
     top: 20px;
@@ -599,14 +203,13 @@
     background: #45a049;
 }
 
-/* Header and Paragraph Styles */
 .personal-insights-container h2 {
     font-size: 3rem;
     color: #2A4D69;
     margin-bottom: 20px;
     text-align: center;
     animation: fadeIn 1s ease-in-out;
-    transform: translateZ(30px); /* 3D effect */
+    transform: translateZ(30px);
 }
 
 .personal-insights-container.dark-mode h2 {
@@ -620,7 +223,7 @@
     text-align: center;
     max-width: 800px;
     animation: fadeIn 1.5s ease-in-out;
-    transform: translateZ(30px); /* 3D effect */
+    transform: translateZ(30px);
 }
 
 .personal-insights-container.dark-mode p {
@@ -632,7 +235,6 @@
     to { opacity: 1; }
 }
 
-/* Tabs Styles */
 .personal-insights-tabs {
     display: flex;
     justify-content: center;
@@ -693,7 +295,6 @@
     font-size: 1.2rem;
 }
 
-/* Advanced Hover Effects */
 .personal-insights-tab-button::before {
     content: '';
     position: absolute;
@@ -711,7 +312,6 @@
     opacity: 1;
 }
 
-/* Content Styles */
 .personal-insights-content {
     width: 100%;
     max-width: 800px;
@@ -722,7 +322,7 @@
     padding: 30px;
     transition: opacity 0.3s ease, transform 0.3s ease;
     animation: fadeIn 2s ease-in-out;
-    transform: translateZ(20px); /* 3D effect */
+    transform: translateZ(20px);
 }
 
 .personal-insights-container.dark-mode .personal-insights-content {
@@ -745,7 +345,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Scrollable Content Cards */
 .content-card {
     background: #fff;
     border-radius: 10px;
@@ -800,7 +399,6 @@
     padding-top: 20px;
 }
 
-/* Stylish Dividers */
 .content .content-card:not(:last-child)::after {
     content: '';
     display: block;
@@ -810,7 +408,6 @@
     margin: 20px auto;
 }
 
-/* Contact & Networking Styles */
 .contact-content {
     display: flex;
     flex-direction: column;
@@ -880,7 +477,6 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .personal-insights-tab-button {
         padding: 8px 16px;

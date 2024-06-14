@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ProjectCard.css'; 
+import './ProjectCard.css';
 
 const ProjectCard = ({ project }) => {
     const [showTooltip, setShowTooltip] = useState(false);
@@ -53,7 +53,7 @@ const ProjectCard = ({ project }) => {
                             <div
                                 key={index}
                                 className="cube2-milestone-marker"
-                                style={{ left: `${milestone.position}%` }}
+                                style={{ left: `${(milestone.position / project.milestones.length) * 100}%` }}
                                 title={milestone.title}
                             ></div>
                         ))}

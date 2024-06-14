@@ -91,7 +91,6 @@ const ProblemSolving = () => {
             setOutput('All test cases passed!');
         }
         setIsRunning(false);
-        // Stop the timer when the solution is submitted
         setChallengeActive(false);
         clearInterval(timer);
     };
@@ -192,19 +191,16 @@ const ProblemSolving = () => {
     };
 
     const getCodeReview = async () => {
-        // Mocked API call for code review
         const review = `The code looks good overall. Consider using more descriptive variable names. Also, avoid nested loops if possible for better performance.`;
         setReviewFeedback(review);
     };
 
     const getRefactorSuggestion = async () => {
-        // Mocked API call for refactoring suggestions
         const suggestion = `Consider using a switch statement instead of multiple if-else blocks for better readability and performance.`;
         setRefactorSuggestion(suggestion);
     };
 
     const debugCode = async () => {
-        // Mocked API call for debugging
         const debugInfo = `Line 10: The variable 'output' is not defined. Ensure you have declared all variables before using them.`;
         setDebuggerOutput(debugInfo);
     };
@@ -214,7 +210,6 @@ const ProblemSolving = () => {
     };
 
     const calculatePerformanceMetrics = () => {
-        // Mocked API call for performance metrics
         const metrics = {
             executionTime: '120ms',
             memoryUsage: '15MB',

@@ -1,9 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import './ProjectCard.css';
 import { Chart, registerables } from 'chart.js';
 import { Timeline } from 'vis-timeline/standalone';
 import { DataSet } from 'vis-data';
-
 
 Chart.register(...registerables);
 
@@ -12,6 +11,52 @@ const ProjectCard = ({ project, detailedView }) => {
     const timelineRef = useRef(null);
     const chartInstance = useRef(null);
     const [viewMode, setViewMode] = useState('bar');
+
+    const getChartData = useCallback((chartType, project) => {
+        const baseColor = chartType === 'bar' ? 'rgba(54, 162, 235, 0.2)' : 'rgb(75, 192, 192)';
+        const borderColor = chartType === 'bar' ? 'rgba(54, 162, 235, 1)' : 'rgb(75, 192, 192)';
+        return {
+            labels: chartType === 'bar' ? project.technologies : ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+            datasets: [{
+                label: chartType === 'bar' ? `${project.title} Technology Use` : `${project.title} Development Progress`,
+                data: chartType === 'bar' ? getProjectData(project) : [20, 40, 60, 80, 100],
+                backgroundColor: baseColor,
+                borderColor: borderColor,
+                borderWidth: 1,
+                fill: chartType !== 'bar'
+            }]
+        };
+    }, []);
+
+    const getChartOptions = useCallback(() => {
+        return {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            responsive: true,
+            plugins: {
+                tooltip: {
+                    enabled: true,
+                    callbacks: {
+                        label: function (context) {
+                            return `${context.dataset.label}: ${context.raw.toFixed(2)}`;
+                        }
+                    }
+                }
+            }
+        };
+    }, []);
+
+    const getProjectData = (project) => {
+        if (project.title === "Next Door Helpers") {
+            return [90, 50, 90, 90, 70, 50, 30, 90];
+        } else if (project.title === "Bar Crawl App") {
+            return [90, 70, 90, 70, 50, 40, 90];
+        }
+        return [];
+    };
 
     useEffect(() => {
         if (viewMode === 'timeline') {
@@ -41,16 +86,10 @@ const ProjectCard = ({ project, detailedView }) => {
                 chartInstance.current.destroy();
             }
         };
-    }, [viewMode, project]);
+    }, [viewMode, project, getChartData, getChartOptions]);
 
     const toggleViewMode = () => {
-        if (viewMode === 'bar') {
-            setViewMode('line');
-        } else if (viewMode === 'line') {
-            setViewMode('timeline');
-        } else {
-            setViewMode('bar');
-        }
+        setViewMode((prevMode) => (prevMode === 'bar' ? 'line' : prevMode === 'line' ? 'timeline' : 'bar'));
     };
 
     return (
@@ -75,76 +114,22 @@ const ProjectCard = ({ project, detailedView }) => {
                                 {project.progress}%
                             </div>
                         </div>
+                        <button onClick={toggleViewMode} className="toggle-view">Toggle View</button>
+                        <div className="reviews-container">
+                            {project.reviews.map((review, index) => (
+                                <blockquote key={index}>
+                                    <p>{review.feedback}</p>
+                                    <footer>- {review.user}</footer>
+                                </blockquote>
+                            ))}
+                        </div>
+                        <canvas ref={chartRef} style={{ display: viewMode !== 'timeline' ? 'block' : 'none' }} className="tech-usage-chart"></canvas>
+                        <div ref={timelineRef} style={{ display: viewMode === 'timeline' ? 'block' : 'none', height: '200px' }}></div>
                     </>
                 )}
-                {!detailedView && (
-                    <button onClick={toggleViewMode} className="toggle-view">Toggle View</button>
-                )}
-                {!detailedView && (
-                    <div className="reviews-container">
-                        {project.reviews.map((review, index) => (
-                            <blockquote key={index}>
-                                <p>{review.feedback}</p>
-                                <footer>- {review.user}</footer>
-                            </blockquote>
-                        ))}
-                    </div>
-                )}
             </div>
-            {!detailedView && (
-                <>
-                    <canvas ref={chartRef} style={{ display: viewMode !== 'timeline' ? 'block' : 'none' }} className="tech-usage-chart"></canvas>
-                    <div ref={timelineRef} style={{ display: viewMode === 'timeline' ? 'block' : 'none', height: '200px' }}></div>
-                </>
-            )}
         </div>
     );
 };
 
 export default ProjectCard;
-
-function getChartData(chartType, project) {
-    const baseColor = chartType === 'bar' ? 'rgba(54, 162, 235, 0.2)' : 'rgb(75, 192, 192)';
-    const borderColor = chartType === 'bar' ? 'rgba(54, 162, 235, 1)' : 'rgb(75, 192, 192)';
-    return {
-        labels: chartType === 'bar' ? project.technologies : ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-        datasets: [{
-            label: chartType === 'bar' ? `${project.title} Technology Use` : `${project.title} Development Progress`,
-            data: chartType === 'bar' ? getProjectData(project) : [20, 40, 60, 80, 100],
-            backgroundColor: baseColor,
-            borderColor: borderColor,
-            borderWidth: 1,
-            fill: chartType !== 'bar'
-        }]
-    };
-}
-
-function getChartOptions() {
-    return {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        },
-        responsive: true,
-        plugins: {
-            tooltip: {
-                enabled: true,
-                callbacks: {
-                    label: function (context) {
-                        return `${context.dataset.label}: ${context.raw.toFixed(2)}`;
-                    }
-                }
-            }
-        }
-    };
-}
-
-function getProjectData(project) {
-    if (project.title === "Next Door Helpers") {
-        return [90, 50, 90, 90, 70, 50, 30, 90];
-    } else if (project.title === "Bar Crawl App") {
-        return [90, 70, 90, 70, 50, 40, 90];
-    }
-    return [];
-}

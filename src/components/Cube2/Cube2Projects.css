@@ -11,21 +11,18 @@
     z-index: 1;
 }
 
-/* Light Mode Background */
 .cube2-light-mode {
     background: linear-gradient(135deg, #e8f9fd 0%, #eef2f3 100%);
     backdrop-filter: blur(10px);
     animation: cube2-gradientShift 20s ease infinite;
 }
 
-/* Dark Mode Background */
 .cube2-project-showcase.cube2-dark-mode {
     background: linear-gradient(135deg, #1a2a6c 0%, #000428 100%);
     backdrop-filter: blur(10px);
     animation: cube2-gradientShift 20s ease infinite;
 }
 
-/* Projects Container */
 .cube2-projects-container {
     padding-top: 20px;
     display: grid;
@@ -41,20 +38,17 @@
     z-index: 1;
 }
 
-/* Fade In Animation */
 @keyframes cube2-fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Gradient Shift Animation */
 @keyframes cube2-gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Heading */
 .cube2-projects-heading {
     font-size: 2.5rem;
     color: #2A4D69;
@@ -73,7 +67,6 @@
     color: #ffffff;
 }
 
-/* Filter Container */
 .cube2-filter-container {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
@@ -84,7 +77,6 @@
     margin-bottom: 20px;
 }
 
-/* Custom Checkbox */
 .cube2-custom-checkbox {
     position: relative;
     display: inline-block;
@@ -144,7 +136,6 @@
     transform: rotate(45deg);
 }
 
-/* Custom Select */
 .cube2-custom-select {
     position: relative;
     display: inline-block;
@@ -170,7 +161,6 @@
     border-color: #4CAF50;
 }
 
-/* Reset View and Dark Mode Toggle */
 .cube2-reset-view, .cube2-dark-mode-toggle {
     cursor: pointer;
     border: none;
@@ -209,7 +199,6 @@
     border-radius: 5px;
 }
 
-/* Canvas Background */
 #cube2-background-canvas {
     position: absolute;
     top: 0;
@@ -220,7 +209,6 @@
     pointer-events: none;
 }
 
-/* Back Button */
 .cube2-back-button {
     position: fixed;
     top: 20px;
@@ -248,7 +236,6 @@
     box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
 }
 
-/* Dark Mode Styles */
 body.cube2-dark-mode .cube2-filter-container select, 
 body.cube2-dark-mode .cube2-reset-view,
 body.cube2-dark-mode .cube2-dark-mode-toggle {

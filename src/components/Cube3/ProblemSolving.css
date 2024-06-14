@@ -24,7 +24,6 @@ body.light-mode {
     --highlight-color: rgba(0, 188, 212, 0.2);
 }
 
-/* Common Styles */
 .problem-solving-container {
     display: flex;
     flex-direction: row;
@@ -307,7 +306,6 @@ button:hover {
     100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Dark Mode Toggle Button */
 .dark-mode-toggle {
     position: fixed;
     top: 20px;
@@ -328,7 +326,6 @@ button:hover {
     background: #0097a7;
 }
 
-/* Sidebar Toggle Button */
 .sidebar-toggle {
     position: fixed;
     top: 20px;
@@ -348,6 +345,7 @@ button:hover {
 .sidebar-toggle:hover {
     background: #0097a7;
 }
+
 .timer-container {
     text-align: center;
     margin-top: 20px;

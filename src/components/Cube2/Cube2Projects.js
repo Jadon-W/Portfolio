@@ -209,8 +209,7 @@ const Cube2Projects = ({ onBack }) => {
     }, [selectedTechs]);
 
     const handleSortChange = (e) => {
-        const criterion = e.target.value;
-        setSortCriterion(criterion);
+        setSortCriterion(e.target.value);
     };
 
     const filterProjects = useCallback((techs, statuses, criterion) => {
@@ -358,8 +357,8 @@ const Cube2Projects = ({ onBack }) => {
 
     return (
         <div className={`cube2-project-showcase ${darkMode ? 'cube2-dark-mode' : 'cube2-light-mode'}`}>
-            <h2 className="cube2-projects-heading" aria-label="Project List">Projects</h2>
-            <div className="cube2-filter-container" role="region" aria-label="Filter Options">
+            <h2 className="cube2-projects-heading">Projects</h2>
+            <div className="cube2-filter-container">
                 <div className="cube2-multi-select">
                     {Array.from(new Set(projects.flatMap(p => p.technologies))).map(tech => (
                         <label key={tech} className="cube2-custom-checkbox">

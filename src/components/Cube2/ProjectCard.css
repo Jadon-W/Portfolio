@@ -1,6 +1,6 @@
 /* General Styles */
 .cube2-project-card {
-    background: rgba(255, 255, 255, 0.6); /* Glassmorphism effect */
+    background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     padding: 10px;
     border-radius: 15px;
@@ -10,72 +10,63 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    flex: 1 1 300px; /* Flex grow and shrink with a minimum width */
-    min-width: 300px; /* Ensure cards stay a reasonable size */
-    position: relative; /* Add this to ensure absolute positioning of header */
-    margin-bottom: 20px; /* Add some space between the cards */
+    flex: 1 1 300px;
+    min-width: 300px;
+    position: relative;
+    margin-bottom: 20px;
 }
 
 .cube2-project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* Enhance the hover effect with a smooth shadow */
-    border-radius: 20px; /* Enhance the roundness on hover */
-    z-index: 2; /* Ensure the hover effect is above other elements */
-    /* Combine hover with completion glow */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 0 15px rgba(76, 175, 80, 0.5); /* Example for completed */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    z-index: 2;
 }
 
-/* Dynamic Glows */
 .cube2-project-card.completed:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 0 15px rgba(76, 175, 80, 0.5); /* Green glow for completed */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 0 15px rgba(76, 175, 80, 0.5);
 }
 
 .cube2-project-card.in-progress:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 0 15px rgba(255, 152, 0, 0.5); /* Orange glow for in-progress */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 0 15px rgba(255, 152, 0, 0.5);
 }
 
-/* Interactive Headers */
 .cube2-project-card h3 {
     margin-top: 0;
     color: #2A4D69;
-    font-size: 1.5rem; /* Slightly increased font size */
+    font-size: 1.5rem;
     transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
     display: inline-block;
     position: relative;
     z-index: 1;
-    overflow: visible; /* Ensure the header is not cut off */
 }
 
 .cube2-project-card:hover h3 {
     transform: scale(1.05);
     color: #1a2a6c;
-    overflow: visible; /* Ensure the header is not cut off */
-    z-index: 2; /* Ensure the header text stays above the card */
-    box-shadow: none; /* Remove shadow effect on hover */
 }
 
-/* Specific Font Sizes */
 .cube2-project-card p {
     color: #666;
-    font-size: 1rem; /* Consistent font size for all paragraph elements */
+    font-size: 1rem;
 }
 
-.cube2-project-card p.completion-date, .cube2-project-card p.user-rating, .cube2-project-card p.development-timeline {
-    font-size: 1rem; /* Ensuring consistency in font size */
+.cube2-project-card p.completion-date,
+.cube2-project-card p.user-rating,
+.cube2-project-card p.development-timeline {
+    font-size: 1rem;
 }
 
-/* Progress Bar Container */
 .cube2-progress-bar-container {
     margin-top: 20px;
     background-color: #e8f9fd;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    padding: 10px; /* Add padding for the label */
-    text-align: center; /* Center the label */
+    padding: 10px;
+    text-align: center;
 }
 
-/* Progress Bar */
 .cube2-progress-bar {
     height: 20px;
     display: flex;
@@ -89,7 +80,7 @@
     overflow: hidden;
     background-size: 200% 100%;
     animation: cube2-gradientMove 5s ease infinite;
-    border-radius: 10px; /* Make the progress bar more rounded */
+    border-radius: 10px;
 }
 
 .cube2-progress-bar.completed {
@@ -121,7 +112,6 @@
     color: #2A4D69;
 }
 
-/* Tooltip */
 .cube2-progress-bar-tooltip {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.75);
@@ -134,7 +124,6 @@
     z-index: 1;
 }
 
-/* Technology Tags */
 .cube2-technologies {
     display: flex;
     flex-wrap: wrap;
@@ -152,12 +141,13 @@
     margin: 5px 0;
     transition: transform 0.3s, background-color 0.3s;
 }
+
 .cube2-technologies li:hover {
     background-color: #55c2da;
     color: #fff;
     transform: scale(1.1);
 }
-/* Milestone Marker */
+
 .cube2-milestone-marker {
     position: absolute;
     top: 0;
@@ -165,7 +155,9 @@
     height: 100%;
     background-color: #ff5722;
     transition: background-color 0.3s ease;
+    animation: markerAppear 0.5s ease-out;
 }
+
 @keyframes markerAppear {
     from {
         opacity: 0;
@@ -177,11 +169,6 @@
     }
 }
 
-.cube2-milestone-marker {
-    animation: markerAppear 0.5s ease-out;
-}
-
-/* Focus States */
 .cube2-project-card:focus,
 .cube2-project-card h3:focus,
 .cube2-project-card p:focus,
@@ -191,26 +178,26 @@
 .cube2-dark-mode-toggle:focus,
 .cube2-custom-checkbox input:focus ~ .cube2-checkmark,
 .cube2-custom-select-trigger:focus {
-    outline: 3px solid #4CAF50; /* Green outline for focus */
+    outline: 3px solid #4CAF50;
     outline-offset: 2px;
 }
 
 .cube2-custom-checkbox input:focus ~ .cube2-checkmark {
-    box-shadow: 0 0 3px 3px rgba(76, 175, 80, 0.5); /* Green glow for focus */
+    box-shadow: 0 0 3px 3px rgba(76, 175, 80, 0.5);
 }
 
 .cube2-custom-select-trigger:focus {
-    box-shadow: 0 0 3px 3px rgba(76, 175, 80, 0.5); /* Green glow for focus */
+    box-shadow: 0 0 3px 3px rgba(76, 175, 80, 0.5);
 }
 
 .cube2-reset-view:focus,
 .cube2-dark-mode-toggle:focus {
-    box-shadow: 0 0 3px 3px rgba(76, 175, 80, 0.5); /* Green glow for focus */
+    box-shadow: 0 0 3px 3px rgba(76, 175, 80, 0.5);
 }
 
 .cube2-custom-checkbox input:focus-visible ~ .cube2-checkmark,
 .cube2-custom-select-trigger:focus-visible {
-    outline: none; /* Remove default focus outline for custom styles */
+    outline: none;
 }
 
 .cube2-project-card:focus-visible,
@@ -218,17 +205,16 @@
 .cube2-project-card p:focus-visible,
 .cube2-project-card ul:focus-visible,
 .cube2-project-card li:focus-visible {
-    outline: none; /* Remove default focus outline for custom styles */
+    outline: none;
 }
 
-/* Dark Mode Styles */
 body.cube2-dark-mode .cube2-project-card {
     background-color: rgba(44, 44, 44, 0.6);
     color: #ffffff;
 }
 
 body.cube2-dark-mode .cube2-filter-container {
-    background: rgba(44, 44, 44, 0.6); /* Glassmorphism effect */
+    background: rgba(44, 44, 44, 0.6);
     backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 15px;
@@ -240,7 +226,7 @@ body.cube2-dark-mode .cube2-project-card h3 {
     color: #ffffff;
 }
 
-body.cube2-dark-mode .cube2-project-card p, 
+body.cube2-dark-mode .cube2-project-card p,
 body.cube2-dark-mode .cube2-project-card li {
     color: #cccccc;
 }
@@ -252,11 +238,11 @@ body.cube2-dark-mode .cube2-technologies li {
 
 body.cube2-dark-mode .cube2-project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2), 0 0 15px rgba(76, 175, 80, 0.5); /* Completion-dependent glow for completed */
+    box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2), 0 0 15px rgba(76, 175, 80, 0.5);
 }
 
 body.cube2-dark-mode .cube2-project-card.in-progress:hover {
-    box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2), 0 0 15px rgba(255, 152, 0, 0.5); /* Completion-dependent glow for in-progress */
+    box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2), 0 0 15px rgba(255, 152, 0, 0.5);
 }
 
 body.cube2-dark-mode .cube2-progress-bar-container {
@@ -297,7 +283,6 @@ body.cube2-dark-mode .cube2-link:hover {
     color: #ffffff;
 }
 
-/* Keyframes */
 @keyframes cube2-move {
     0% {
         transform: translateX(-100%);
@@ -324,7 +309,6 @@ body.cube2-dark-mode .cube2-link:hover {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Compare Button */
 .cube2-compare-button {
     margin-top: 10px;
     padding: 10px;
@@ -348,7 +332,6 @@ body.cube2-dark-mode .cube2-link:hover {
     background-color: #e64a19;
 }
 
-/* Comparison View */
 .cube2-comparison-container {
     margin-top: 20px;
     background: rgba(255, 255, 255, 0.9);
@@ -393,7 +376,6 @@ body.cube2-dark-mode .cube2-link:hover {
     border-radius: 5px;
 }
 
-/* Dark Mode Styles */
 body.cube2-dark-mode .cube2-comparison-container {
     background: rgba(44, 44, 44, 0.9);
 }

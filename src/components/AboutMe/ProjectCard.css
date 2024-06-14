@@ -1,13 +1,13 @@
 .project-card {
     position: relative;
     width: 100%;
-    min-height: 400px; 
+    min-height: 400px;
     padding: 20px;
     margin: 10px;
     box-sizing: border-box;
     border-radius: 10px;
     background: #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     overflow: hidden;
@@ -15,7 +15,7 @@
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .project-card h3, .project-card p, .project-card ul, .project-card li {
@@ -48,41 +48,13 @@
     font-size: 0.85rem;
 }
 
-.project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.5s;
-}
-
 .project-content, .tech-usage-chart {
     transition: max-height 0.3s ease-out;
-}
-
-.project-card:hover .project-overlay {
-    opacity: 1;
 }
 
 .satisfaction-slider-container {
     margin-top: 10px;
     padding: 10px;
-}
-
-.toggle-chart {
-    padding: 8px 16px;
-    margin-top: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .toggle-view, .dark-mode-toggle {
@@ -95,6 +67,10 @@
     cursor: pointer;
 }
 
+.toggle-view:hover, .dark-mode-toggle:hover {
+    background-color: #45a049;
+}
+
 .satisfaction-slider {
     width: 100%;
     -webkit-appearance: none;
@@ -104,7 +80,7 @@
     background: #ddd;
     outline: none;
     opacity: 0.7;
-    transition: opacity .2s;
+    transition: opacity 0.2s;
 }
 
 .satisfaction-slider:hover {
