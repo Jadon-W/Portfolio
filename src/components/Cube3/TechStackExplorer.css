@@ -194,3 +194,141 @@ body {
 .skill-details-modal .close-button:hover {
   background: var(--secondary-color);
 }
+
+@media (max-width: 768px) {
+  .advanced-skill-showcase {
+      padding: 25px;
+      border-radius: 15px;
+  }
+
+  .advanced-skill-showcase h2 {
+      font-size: 2.5rem;
+  }
+
+  .filter-section {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+  }
+
+  .skill-list {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .skill-card {
+      flex: 1 1 100%;
+      margin: 10px 0;
+      padding: 20px;
+  }
+
+  .skill-card h3 {
+      font-size: 1.3rem;
+  }
+
+  .progress-bar {
+      height: 20px;
+      margin-top: 10px;
+  }
+
+  .progress-label {
+      font-size: 0.9rem;
+  }
+
+  .skill-details-modal {
+      width: 95%;
+      padding: 20px;
+      border-radius: 15px;
+  }
+
+  .skill-details-modal h3 {
+      font-size: 1.8rem;
+  }
+
+  .skill-details-modal p {
+      font-size: 1rem;
+  }
+
+  .skill-details-modal ul li {
+      padding: 8px;
+  }
+
+  .skill-details-modal .close-button {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .advanced-skill-showcase {
+      padding: 15px;
+      border-radius: 10px;
+  }
+
+  .advanced-skill-showcase h2 {
+      font-size: 2rem;
+  }
+
+  .filter-section {
+      gap: 15px;
+  }
+
+  .skill-card {
+      padding: 15px;
+      margin: 10px 0;
+  }
+
+  .skill-card h3 {
+      font-size: 1.1rem;
+  }
+
+  .progress-bar {
+      height: 15px;
+  }
+
+  .progress-label {
+      font-size: 0.8rem;
+  }
+
+  .skill-details-modal {
+      padding: 15px;
+      border-radius: 10px;
+  }
+
+  .skill-details-modal h3 {
+      font-size: 1.5rem;
+  }
+
+  .skill-details-modal p {
+      font-size: 0.9rem;
+  }
+
+  .skill-details-modal ul li {
+      padding: 6px;
+  }
+
+  .skill-details-modal .close-button {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+  }
+}
+
+/* Additional Enhancements for better mobile experience */
+.advanced-skill-showcase {
+  touch-action: manipulation;
+  background: var(--background-blur);
+}
+
+.skill-card:active {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+}
+
+.skill-card h3::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: var(--primary-color);
+  margin: 5px 0;
+}

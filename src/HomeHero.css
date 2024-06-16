@@ -50,3 +50,12 @@
     transform: translateY(20px);
   }
 }
+
+@media (max-width: 480px) {
+  button.back-button {
+      padding: 14px 20px;
+      font-size: 0.8rem;
+      width: auto;
+      height: auto;
+  }
+}

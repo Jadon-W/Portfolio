@@ -122,3 +122,71 @@
 .back-to-top:focus {
     outline: none;
 }
+
+@media (max-width: 768px) {
+    .cube3-nav {
+        top: 10px;
+        right: 10px;
+        padding: 8px 16px; /* Reduce padding */
+    }
+
+    .cube3-nav ul {
+        gap: 10px; /* Reduce gap */
+    }
+
+    .cube3-nav button {
+        font-size: 0.9rem; /* Adjust font size */
+        padding: 4px 8px; /* Reduce padding */
+        min-width: 70px; /* Ensure buttons fit words */
+        width: auto; /* Allow dynamic width */
+    }
+
+    .cube3-section {
+        padding: 15px; /* Reduce padding */
+    }
+
+    .cube3-section h1 {
+        font-size: 2rem; /* Adjust font size */
+    }
+
+    .back-to-top {
+        width: 35px; /* Adjust size */
+        height: 35px; /* Adjust size */
+        bottom: 20px; /* Adjust position */
+        right: 20px; /* Adjust position */
+    }
+}
+
+@media (max-width: 480px) {
+    .cube3-nav {
+        top: 5px;
+        right: 5px;
+        padding: 6px 12px; /* Further reduce padding */
+    }
+
+    .cube3-nav ul {
+        gap: 5px; /* Further reduce gap */
+    }
+
+    .cube3-nav button {
+        font-size: 0.8rem; /* Further adjust font size */
+        padding: 3px 6px; /* Further reduce padding */
+        min-width: 60px; /* Ensure buttons fit words */
+        width: auto; /* Allow dynamic width */
+    }
+
+    .cube3-section {
+        padding: 10px; /* Further reduce padding */
+    }
+
+    .cube3-section h1 {
+        font-size: 1.5rem; /* Further adjust font size */
+    }
+
+    .back-to-top {
+        width: 30px; /* Further adjust size */
+        height: 30px; /* Further adjust size */
+        bottom: 15px; /* Further adjust position */
+        right: 15px; /* Further adjust position */
+    }
+}

@@ -70,26 +70,7 @@ const MajorProjects = () => {
     const [detailedView, setDetailedView] = useState(null);
     const [darkMode, setDarkMode] = useState(false);
 
-    const handleTechChange = (e) => {
-        const tech = e.target.value;
-        setSelectedTech(tech);
-        filterProjects(tech, selectedStatus, sortCriterion);
-        setDetailedView(tech !== 'all' ? tech : null);
-    };
-
-    const handleStatusChange = (e) => {
-        const status = e.target.value;
-        setSelectedStatus(status);
-        filterProjects(selectedTech, status, sortCriterion);
-    };
-
-    const handleSortChange = (e) => {
-        const criterion = e.target.value;
-        setSortCriterion(criterion);
-        filterProjects(selectedTech, selectedStatus, criterion);
-    };
-
-    const filterProjects = (tech, status, criterion) => {
+    const filterProjects = useCallback((tech, status, criterion) => {
         let filtered = projects;
 
         if (tech !== 'all') {
@@ -111,6 +92,26 @@ const MajorProjects = () => {
         });
 
         setFilteredProjects(filtered);
+    }, []);
+
+    useEffect(() => {
+        filterProjects(selectedTech, selectedStatus, sortCriterion);
+    }, [selectedTech, selectedStatus, sortCriterion, filterProjects]);
+
+    const handleTechChange = (e) => {
+        const tech = e.target.value;
+        setSelectedTech(tech);
+        setDetailedView(tech !== 'all' ? tech : null);
+    };
+
+    const handleStatusChange = (e) => {
+        const status = e.target.value;
+        setSelectedStatus(status);
+    };
+
+    const handleSortChange = (e) => {
+        const criterion = e.target.value;
+        setSortCriterion(criterion);
     };
 
     const resetView = () => {

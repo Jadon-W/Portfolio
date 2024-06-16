@@ -1,164 +1,220 @@
 .tech-journey-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    background: linear-gradient(to right, #B2DFDB, #E0F2F1);
-    transition: background 0.8s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #B2DFDB, #E0F2F1);
+  transition: background 0.8s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-container {
+  height: 80vh;
+  width: 60%;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  overflow-y: auto;
+}
+
+.timeline-item {
+  width: 100%;
+  height: 200px;
+  margin: 20px 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-dot {
+  width: 20px;
+  height: 20px;
+  background-color: #009688;
+  border-radius: 50%;
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-date {
+  font-size: 1rem;
+  color: #666;
+}
+
+.timeline-content h3 {
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.timeline-content p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.floating-icon {
+  position: absolute;
+  font-size: 2rem;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(-20px); }
+  50% { transform: translateY(20px); }
+}
+
+.arrow-container {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  transform: translateY(-50%);
+}
+
+.scroll-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 20px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.scroll-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.scroll-button:hover .arrow {
+  animation: bounceAlpha 1.4s infinite linear;
+}
+
+.arrow {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border: solid #009688;
+  border-width: 0 6px 6px 0;
+  display: inline-block;
+  padding: 5px;
+}
+
+.arrow.up {
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.arrow.down {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@keyframes bounceAlpha {
+  0% { opacity: 1; transform: translateX(0px) scale(1); }
+  25% { opacity: 0; transform: translateX(10px) scale(0.9); }
+  26% { opacity: 0; transform: translateX(-10px) scale(0.9); }
+  55% { opacity: 1; transform: translateX(0px) scale(1); }
+}
+
+.scroll-button:hover .arrow {
+  background-color: #004D40;
+}
+
+@media (max-width: 768px) {
   .timeline-container {
-    height: 80vh;
-    width: 60%;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative;
-    overflow-y: auto;
-  }
-  
-  .timeline-item {
-    width: 100%;
-    height: 200px;
-    margin: 20px 0;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .timeline-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .timeline-dot {
-    width: 20px;
-    height: 20px;
-    background-color: #009688;
-    border-radius: 50%;
-    position: absolute;
-    left: -10px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .timeline-date {
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  .timeline-content h3 {
-    color: #333;
-    font-size: 1.5rem;
-  }
-  
-  .timeline-content p {
-    color: #666;
-    font-size: 1.1rem;
-  }
-  
-  .floating-icon {
-    position: absolute;
-    font-size: 2rem;
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(-20px); }
-    50% { transform: translateY(20px); }
-  }
-  
-  .arrow-container {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    transform: translateY(-50%);
-  }
-  
-  .scroll-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 20px;
-    position: relative;
-    transition: transform 0.3s ease;
-  }
-  
-  .scroll-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  .scroll-button:hover .arrow {
-    animation: bounceAlpha 1.4s infinite linear;
-  }
-  
-  .arrow {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    border: solid #009688;
-    border-width: 0 6px 6px 0;
-    display: inline-block;
-    padding: 5px;
-  }
-  
-  .arrow.up {
-    transform: translate(-50%, -50%) rotate(-135deg);
-  }
-  
-  .arrow.down {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  
-  @keyframes bounceAlpha {
-    0% { opacity: 1; transform: translateX(0px) scale(1); }
-    25% { opacity: 0; transform: translateX(10px) scale(0.9); }
-    26% { opacity: 0; transform: translateX(-10px) scale(0.9); }
-    55% { opacity: 1; transform: translateX(0px) scale(1); }
-  }
-  
-  .scroll-button:hover .arrow {
-    background-color: #004D40;
-  }
-  
-  @media (max-width: 600px) {
-    .timeline-container {
-      padding: 10px;
+      padding: 15px;
       width: 80%;
-    }
-  
-    .timeline-item {
+  }
+
+  .timeline-item {
+      height: auto; /* Allow dynamic height based on content */
+      padding: 15px;
+  }
+
+  .timeline-dot {
+      left: -8px;
+      width: 15px;
+      height: 15px;
+  }
+
+  .arrow-container {
+      gap: 30px;
+  }
+
+  .scroll-button {
+      padding: 15px;
+  }
+
+  .arrow {
+      width: 18px;
+      height: 18px;
+  }
+
+  .timeline-content h3 {
+      font-size: 1.2rem;
+  }
+
+  .timeline-content p {
+      font-size: 0.9rem;
+      word-wrap: break-word; 
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-journey-container {
+      flex-direction: column;
+      padding: 10px;
+  }
+
+  .timeline-container {
+      padding: 10px;
       width: 100%;
-      height: 180px;
-    }
-  
-    .timeline-dot {
-      left: -5px;
-    }
-  
-    .scroll-button {
-      width: 40px;
-      height: 40px;
-    }
-  
-    .arrow {
+      height: 70vh;
+  }
+
+  .timeline-item {
+      height: auto; 
+      margin: 10px 0;
+      padding: 15px;
+  }
+
+  .timeline-dot {
+      left: -6px;
+      width: 12px;
+      height: 12px;
+  }
+
+  .scroll-button {
+      padding: 12px;
+  }
+
+  .arrow {
       width: 16px;
       height: 16px;
-    }
   }
-  
+
+  .timeline-content h3 {
+      font-size: 1rem;
+  }
+
+  .timeline-content p {
+      font-size: 0.75rem;
+      word-wrap: break-word; 
+  }
+}

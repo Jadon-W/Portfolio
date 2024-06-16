@@ -6,13 +6,30 @@ const WelcomeComponent = ({ onNavigate }) => {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
 
+  const handleResize = useCallback(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth * window.devicePixelRatio;
+    canvas.height = window.innerHeight * window.devicePixelRatio;
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    // Reinitialize clouds and waves here...
+  }, []);
+
+  const debounce = useCallback((func, wait) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }, []);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    let w = canvas.width = window.innerWidth * window.devicePixelRatio;
-    let h = canvas.height = window.innerHeight * window.devicePixelRatio;
+    const w = canvas.width = window.innerWidth * window.devicePixelRatio;
+    const h = canvas.height = window.innerHeight * window.devicePixelRatio;
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-    
+
     const waves = [];
     const speed = 0.02;
     let cloudOffset = 0;
@@ -162,23 +179,6 @@ const WelcomeComponent = ({ onNavigate }) => {
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    const handleResize = () => {
-      w = canvas.width = window.innerWidth * window.devicePixelRatio;
-      h = canvas.height = window.innerHeight * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      initClouds();
-      waves.length = 0;
-      init();
-    };
-
-    const debounce = (func, wait) => {
-      let timeout;
-      return (...args) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-      };
-    };
-
     window.addEventListener('resize', debounce(handleResize, 100));
 
     init();
@@ -187,7 +187,7 @@ const WelcomeComponent = ({ onNavigate }) => {
       window.removeEventListener('resize', debounce(handleResize, 100));
       cancelAnimationFrame(animationRef.current);
     };
-  }, []);
+  }, [debounce, handleResize]);
 
   return (
     <div className="welcome-section">

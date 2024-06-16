@@ -52,11 +52,6 @@
     transition: max-height 0.3s ease-out;
 }
 
-.satisfaction-slider-container {
-    margin-top: 10px;
-    padding: 10px;
-}
-
 .toggle-view, .dark-mode-toggle {
     padding: 8px 16px;
     margin-top: 10px;
@@ -69,6 +64,11 @@
 
 .toggle-view:hover, .dark-mode-toggle:hover {
     background-color: #45a049;
+}
+
+.satisfaction-slider-container {
+    margin-top: 10px;
+    padding: 10px;
 }
 
 .satisfaction-slider {
@@ -195,4 +195,109 @@ body.dark-mode .tech-detail.highlight {
     color: #80ff80;
     font-weight: bold;
     font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .project-card {
+        min-height: auto; 
+        padding: 10px; 
+        margin-bottom: 10px; 
+        font-size: 0.8rem; 
+    }
+
+    .project-card h3 {
+        font-size: 1.2rem; 
+    }
+
+    .project-card p, .project-card li {
+        font-size: 0.9rem; 
+    }
+
+    .project-content, .tech-usage-chart {
+        transition: max-height 0.3s ease-out;
+    }
+
+    .toggle-view, .dark-mode-toggle {
+        padding: 6px 12px; 
+        font-size: 0.9rem; 
+    }
+
+    .satisfaction-slider {
+        height: 10px; 
+    }
+
+    .satisfaction-slider::-webkit-slider-thumb, .satisfaction-slider::-moz-range-thumb {
+        width: 20px; 
+        height: 20px; 
+    }
+
+    .progress-bar {
+        height: 15px; 
+        line-height: 15px; 
+        font-size: 0.8rem; 
+    }
+
+    .reviews-container blockquote p {
+        font-size: 0.9rem; 
+    }
+
+    .reviews-container blockquote footer {
+        font-size: 0.8rem; 
+    }
+
+    
+    .project-card {
+        max-height: calc(100vh - 200px); 
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card {
+        padding: 5px; 
+        margin-bottom: 5px; 
+        font-size: 0.75rem; 
+    }
+
+    .project-card h3 {
+        font-size: 1rem; 
+    }
+
+    .project-card p, .project-card li {
+        font-size: 0.85rem; 
+    }
+
+    .toggle-view, .dark-mode-toggle {
+        padding: 5px 10px; 
+        font-size: 0.85rem; 
+    }
+
+    .satisfaction-slider {
+        height: 8px; 
+    }
+
+    .satisfaction-slider::-webkit-slider-thumb, .satisfaction-slider::-moz-range-thumb {
+        width: 18px; 
+        height: 18px; 
+    }
+
+    .progress-bar {
+        height: 12px;
+        line-height: 12px; 
+        font-size: 0.75rem; 
+    }
+
+    .reviews-container blockquote p {
+        font-size: 0.85rem; 
+    }
+
+    .reviews-container blockquote footer {
+        font-size: 0.75rem; 
+    }
+
+    
+    .project-card {
+        max-height: calc(100vh - 200px); 
+        overflow-y: auto;
+    }
 }

@@ -310,3 +310,95 @@
 .cube2-dark-mode .cube2-reset-view:hover {
     background-color: #45a049;
 }
+
+@media (max-width: 768px) {
+    .cube2-project-showcase {
+        padding: 10px; 
+    }
+
+    .cube2-projects-heading {
+        font-size: 2rem; 
+    }
+
+    .cube2-filter-container {
+        padding: 15px; 
+    }
+
+    .cube2-reset-view, .cube2-dark-mode-toggle {
+        font-size: 0.8rem; 
+        padding: 5px 10px; 
+    }
+
+    .cube2-project-card {
+        padding: 10px; 
+        min-width: auto; 
+        font-size: 0.9rem; 
+    }
+
+    .cube2-project-card h3 {
+        font-size: 1.2rem; 
+    }
+
+    .cube2-project-card p {
+        font-size: 0.85rem; 
+    }
+
+    .cube2-progress-bar {
+        height: 15px; 
+    }
+
+    .cube2-progress-bar-label {
+        font-size: 0.9rem; 
+    }
+
+    .cube2-technologies li {
+        padding: 5px; 
+        font-size: 0.75rem; 
+    }
+}
+
+@media (max-width: 480px) {
+    .cube2-project-showcase {
+        padding: 5px; 
+    }
+
+    .cube2-projects-heading {
+        font-size: 1.5rem; 
+    }
+
+    .cube2-filter-container {
+        padding: 10px; 
+    }
+
+    .cube2-reset-view, .cube2-dark-mode-toggle {
+        font-size: 0.7rem; 
+        padding: 4px 8px; 
+        width: 90px; 
+    }
+
+    .cube2-project-card {
+        padding: 8px;
+        font-size: 0.8rem; 
+    }
+
+    .cube2-project-card h3 {
+        font-size: 1rem; 
+    }
+
+    .cube2-project-card p {
+        font-size: 0.75rem; 
+    }
+
+    .cube2-progress-bar {
+        height: 12px;
+    }
+
+    .cube2-progress-bar-label {
+        font-size: 0.8rem; 
+    }
+
+    .cube2-technologies li {
+        padding: 3px 5px; 
+        font-size: 0.7rem; 
+    }
+}
