@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import './PersonalInsights.css';
 
 const tabs = [
@@ -51,11 +51,23 @@ const insights = {
     ]
 };
 
+const ToggleButton = ({ isDarkMode, toggleMode }) => (
+    <div className="toggle-mode">
+        <button onClick={toggleMode}>
+            {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        </button>
+    </div>
+);
+
+const Star = React.memo(({ className }) => (
+    <div className={className}></div>
+));
+
 const PersonalInsights = () => {
     const [activeTab, setActiveTab] = useState('Coding Philosophy');
     const [isDarkMode, setIsDarkMode] = useState(false);
 
-    const renderTabContent = () => {
+    const renderTabContent = useMemo(() => {
         const content = insights[activeTab];
         return (
             <div className={`content ${activeTab.toLowerCase().replace(/ /g, '-')}`}>
@@ -84,7 +96,11 @@ const PersonalInsights = () => {
                 )}
             </div>
         );
-    };
+    }, [activeTab]);
+
+    const toggleMode = useCallback(() => {
+        setIsDarkMode(prevMode => !prevMode);
+    }, []);
 
     return (
         <div className={`personal-insights-container ${isDarkMode ? 'dark-mode' : ''}`}>
@@ -100,13 +116,13 @@ const PersonalInsights = () => {
             )}
             {isDarkMode && (
                 <>
-                    <div className="star star-small"></div>
-                    <div className="star star-medium"></div>
-                    <div className="star star-large"></div>
-                    <div className="star star-extra-small"></div>
-                    <div className="star star-extra-large"></div>
+                    <Star className="star star-small" />
+                    <Star className="star star-medium" />
+                    <Star className="star star-large" />
+                    <Star className="star star-extra-small" />
+                    <Star className="star star-extra-large" />
                     {Array.from({ length: 40 }).map((_, index) => (
-                        <div key={index} className={`star star-${index + 1}`}></div>
+                        <Star key={index} className={`star star-${index + 1}`} />
                     ))}
                     <div className="moon">
                         <div className="small-crater"></div>
@@ -115,11 +131,7 @@ const PersonalInsights = () => {
                     </div>
                 </>
             )}
-            <div className="toggle-mode">
-                <button onClick={() => setIsDarkMode(!isDarkMode)}>
-                    {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-                </button>
-            </div>
+            <ToggleButton isDarkMode={isDarkMode} toggleMode={toggleMode} />
             <h2>Personal Insights</h2>
             <p>Welcome to my personal insights section! Here, I share my thoughts, experiences, and lessons learned throughout my journey in the tech industry. I hope you find these insights valuable and reflective of my passion for technology.</p>
             <div className="personal-insights-tabs">
@@ -128,13 +140,14 @@ const PersonalInsights = () => {
                         key={index}
                         className={`personal-insights-tab-button ${activeTab === tab.name ? 'active' : ''}`}
                         onClick={() => setActiveTab(tab.name)}
+                        aria-label={tab.name}
                     >
-                        <span className="tab-icon" aria-label={tab.name}>{tab.icon}</span> {tab.name}
+                        <span className="tab-icon" role="img" aria-label={tab.name}>{tab.icon}</span> {tab.name}
                     </button>
                 ))}
             </div>
             <div className="personal-insights-content">
-                {renderTabContent()}
+                {renderTabContent}
             </div>
         </div>
     );

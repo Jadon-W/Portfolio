@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { animated, useSpring, config } from 'react-spring';
 import WelcomeComponent from './WelcomeComponent';
 import TechJourney from './TechJourney';
@@ -9,6 +9,13 @@ import './AboutMe.css';
 const AboutMe = () => {
   const [activeSection, setActiveSection] = useState(0);
   const [scrolling, setScrolling] = useState(false);
+
+  const sections = useMemo(() => [
+    <WelcomeComponent onNavigate={setActiveSection} />,
+    <TechJourney />,
+    <MajorProjects />,
+    <PersonalInsights />,
+  ], []);
 
   const props = useSpring({
     transform: `translateY(-${activeSection * 100}vh)`,
@@ -59,18 +66,11 @@ const AboutMe = () => {
   return (
     <div className="about-me-container">
       <animated.div className="scroll-container" style={props}>
-        <div className="section">
-          <WelcomeComponent onNavigate={setActiveSection} />
-        </div>
-        <div className="section">
-          <TechJourney />
-        </div>
-        <div className="section">
-          <MajorProjects />
-        </div>
-        <div className="section">
-          <PersonalInsights />
-        </div>
+        {sections.map((Section, index) => (
+          <div className="section" key={index}>
+            {Section}
+          </div>
+        ))}
       </animated.div>
       <div className="navigation-dots">
         {[...Array(4)].map((_, index) => (

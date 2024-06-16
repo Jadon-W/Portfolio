@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import './ProjectCard.css';
 
 const ProjectCard = ({ project }) => {
@@ -6,25 +6,25 @@ const ProjectCard = ({ project }) => {
     const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
     const [tooltipContent, setTooltipContent] = useState('');
 
-    const handleMouseEnter = (e) => {
+    const handleMouseEnter = useCallback((e) => {
         setTooltipContent(`Completion: ${project.progress}%`);
         setShowTooltip(true);
         setTooltipPosition({ x: e.clientX, y: e.clientY });
-    };
+    }, [project.progress]);
 
-    const handleMouseLeave = () => {
+    const handleMouseLeave = useCallback(() => {
         setShowTooltip(false);
         setTooltipContent('');
-    };
+    }, []);
 
-    const progressBarStyle = {
+    const progressBarStyle = useMemo(() => ({
         width: `${project.progress}%`,
         transition: 'width 1s ease-in-out',
-    };
+    }), [project.progress]);
 
-    const getProgressBarClass = () => {
+    const getProgressBarClass = useCallback(() => {
         return `cube2-progress-bar ${project.progress === 100 ? 'completed' : 'in-progress'}`;
-    };
+    }, [project.progress]);
 
     return (
         <div className={`cube2-project-card ${project.progress === 100 ? 'completed' : 'in-progress'}`}>
@@ -53,7 +53,7 @@ const ProjectCard = ({ project }) => {
                             <div
                                 key={index}
                                 className="cube2-milestone-marker"
-                                style={{ left: `${(milestone.position / project.milestones.length) * 100}%` }}
+                                style={{ left: `${(index / project.milestones.length) * 100}%` }}
                                 title={milestone.title}
                             ></div>
                         ))}

@@ -68,6 +68,7 @@ const Cube3 = () => {
                 }
             });
             window.removeEventListener('scroll', handleScroll);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         };
     }, []);
 

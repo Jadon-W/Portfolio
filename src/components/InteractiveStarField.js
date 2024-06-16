@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useState } from 'react';
+import React, { useRef, useMemo, useEffect, useCallback } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -20,12 +20,11 @@ varying vec3 vColor;
 void main() {
   float distance = length(gl_PointCoord - vec2(0.5, 0.5));
   float alpha = 1.0 - smoothstep(0.0, 0.5, distance);
-  gl_FragColor = vec4(vColor * alpha, alpha);
+  gl_FragColor = vec4(vColor, alpha * 0.9);
 }`;
 
 const InteractiveStarField = ({ count = 5000 }) => {
   const mesh = useRef();
-  const [hoveredStar, setHoveredStar] = useState(null);
   const { camera, raycaster, mouse } = useThree();
 
   const stars = useMemo(() => {
@@ -57,36 +56,58 @@ const InteractiveStarField = ({ count = 5000 }) => {
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
 
-    stars.attributes.scale.array.forEach((_, i) => {
-      const scaleBase = 1 + 0.3 * Math.sin(elapsedTime * 3 + i * 0.5);
-      stars.attributes.scale.array[i] = scaleBase;
+    const scaleArray = stars.attributes.scale.array;
+    const colorArray = stars.attributes.color.array;
+
+    for (let i = 0; i < count; i++) {
+      scaleArray[i] = 1 + 0.3 * Math.sin(elapsedTime * 3 + i * 0.5);
       const brightness = 0.5 + 0.5 * Math.sin(elapsedTime * 3 + i);
-      const originalColor = new THREE.Color().setHSL(i / count, 0.7, 0.5 + 0.5 * brightness);
-      stars.attributes.color.setXYZ(i, originalColor.r, originalColor.g, originalColor.b);
-    });
+      const color = new THREE.Color().setHSL(i / count, 0.7, 0.5 + 0.5 * brightness);
+      colorArray[i * 3] = color.r;
+      colorArray[i * 3 + 1] = color.g;
+      colorArray[i * 3 + 2] = color.b;
+    }
+
     stars.attributes.scale.needsUpdate = true;
     stars.attributes.color.needsUpdate = true;
+  });
 
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObject(mesh.current);
-    if (intersects.length > 0) {
-      const { index } = intersects[0];
-      if (hoveredStar !== index) {
-        setHoveredStar(index);
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObject(mesh.current);
+      if (intersects.length > 0) {
+        const { index } = intersects[0];
         stars.attributes.size.array[index] = 20;
         stars.attributes.color.setXYZ(index, 1, 1, 1);
         stars.attributes.size.needsUpdate = true;
         stars.attributes.color.needsUpdate = true;
       }
-    } else if (hoveredStar !== null) {
-      stars.attributes.size.array[hoveredStar] = 10 + Math.random() * 10;
-      const originalColor = new THREE.Color().setHSL(hoveredStar / count, 0.7, 0.5);
-      stars.attributes.color.setXYZ(hoveredStar, originalColor.r, originalColor.g, originalColor.b);
-      stars.attributes.size.needsUpdate = true;
-      stars.attributes.color.needsUpdate = true;
-      setHoveredStar(null);
-    }
-  });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (stars) {
+        stars.dispose();
+      }
+    };
+  }, [stars, raycaster, mouse, camera, count]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const { innerWidth, innerHeight } = window;
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [camera]);
 
   return (
     <points ref={mesh} geometry={stars}>

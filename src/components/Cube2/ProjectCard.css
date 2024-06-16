@@ -1,4 +1,3 @@
-/* General Styles */
 .cube2-project-card {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
@@ -213,27 +212,14 @@ body.cube2-dark-mode .cube2-project-card {
     color: #ffffff;
 }
 
-body.cube2-dark-mode .cube2-filter-container {
-    background: rgba(44, 44, 44, 0.6);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, backdrop-filter 0.3s;
-}
-
-body.cube2-dark-mode .cube2-project-card h3 {
-    color: #ffffff;
-}
-
+body.cube2-dark-mode .cube2-project-card h3,
 body.cube2-dark-mode .cube2-project-card p,
 body.cube2-dark-mode .cube2-project-card li {
-    color: #cccccc;
+    color: #ffffff;
 }
 
 body.cube2-dark-mode .cube2-technologies li {
     background-color: #333;
-    color: #ffffff;
 }
 
 body.cube2-dark-mode .cube2-project-card:hover {
@@ -392,4 +378,13 @@ body.cube2-dark-mode .cube2-comparison-card h4 {
 body.cube2-dark-mode .cube2-comparison-card p,
 body.cube2-dark-mode .cube2-comparison-card li {
     color: #cccccc;
+}
+
+body.cube2-dark-mode .cube2-filter-container {
+    background: rgba(44, 44, 44, 0.3); /* Adjusted opacity for correct glassmorphism effect */
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, backdrop-filter 0.3s;
 }

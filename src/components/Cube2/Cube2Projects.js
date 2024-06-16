@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import ProjectCard from './ProjectCard';
 import './Cube2Projects.css';
 
@@ -72,8 +72,8 @@ const projects = [
         },
         progress: 100,
         reviews: [
-            { feedback: "Very intuitive and user-friendly.", user: "Jordan" },
-            { feedback: "Helps understand basic banking operations.", user: "Casey" }
+            { feedback: "It has a lot of features and is really expansive.", user: "Jordan" },
+            { feedback: "Even though it's a gui it actually has a lot to do and really realistic features.", user: "Casey" }
         ]
     },
     {
@@ -96,8 +96,8 @@ const projects = [
         },
         progress: 100,
         reviews: [
-            { feedback: "Highly accurate predictions.", user: "Morgan" },
-            { feedback: "Great tool for stock analysis.", user: "Blake" }
+            { feedback: "Really good predictions for it being a personal project.", user: "Morgan" },
+            { feedback: "Great tool to use for stock analysis and checking trends.", user: "Blake" }
         ]
     },
     {
@@ -185,7 +185,6 @@ const projects = [
 ];
 
 const Cube2Projects = ({ onBack }) => {
-    const [filteredProjects, setFilteredProjects] = useState(projects);
     const [selectedTechs, setSelectedTechs] = useState([]);
     const [selectedStatuses, setSelectedStatuses] = useState([]);
     const [sortCriterion, setSortCriterion] = useState('title');
@@ -212,35 +211,30 @@ const Cube2Projects = ({ onBack }) => {
         setSortCriterion(e.target.value);
     };
 
-    const filterProjects = useCallback((techs, statuses, criterion) => {
+    const filteredProjects = useMemo(() => {
         let filtered = [...projects];
-
-        if (techs.length > 0) {
-            filtered = filtered.filter(project => techs.some(tech => project.technologies.includes(tech)));
+        if (selectedTechs.length > 0) {
+            filtered = filtered.filter(project => selectedTechs.some(tech => project.technologies.includes(tech)));
         }
-
-        if (statuses.length > 0) {
-            filtered = filtered.filter(project => statuses.includes(project.completionDate === "Completed" ? "Completed" : "In Production"));
+        if (selectedStatuses.length > 0) {
+            filtered = filtered.filter(project => selectedStatuses.includes(project.completionDate === "Completed" ? "Completed" : "In Production"));
         }
-
         filtered.sort((a, b) => {
-            if (criterion === 'completionDate') {
+            if (sortCriterion === 'completionDate') {
                 return new Date(b.completionDate) - new Date(a.completionDate);
-            } else if (criterion === 'userRating') {
+            } else if (sortCriterion === 'userRating') {
                 return b.userRating - a.userRating;
             } else {
                 return a.title.localeCompare(b.title);
             }
         });
-
-        setFilteredProjects(filtered);
-    }, []);
+        return filtered;
+    }, [selectedTechs, selectedStatuses, sortCriterion]);
 
     const resetView = () => {
         setSelectedTechs([]);
         setSelectedStatuses([]);
         setSortCriterion('title');
-        setFilteredProjects(projects);
         setFiltersActive(false);
     };
 
@@ -250,18 +244,16 @@ const Cube2Projects = ({ onBack }) => {
     };
 
     useEffect(() => {
-        filterProjects(selectedTechs, selectedStatuses, sortCriterion);
-    }, [selectedTechs, selectedStatuses, sortCriterion, filterProjects]);
-
-    useEffect(() => {
         const canvas = document.getElementById('cube2-background-canvas');
         const ctx = canvas.getContext('2d');
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
+        let width = canvas.width = window.innerWidth * window.devicePixelRatio;
+        let height = canvas.height = window.innerHeight * window.devicePixelRatio;
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
         let particles = [];
         let isDarkMode = document.body.classList.contains('cube2-dark-mode');
 
         const createParticles = () => {
+            particles = [];
             for (let i = 0; i < 100; i++) {
                 particles.push({
                     x: Math.random() * width,
@@ -308,6 +300,21 @@ const Cube2Projects = ({ onBack }) => {
             ctx.stroke();
         };
 
+        const handleResize = () => {
+            width = canvas.width = window.innerWidth * window.devicePixelRatio;
+            height = canvas.height = window.innerHeight * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            createParticles();
+        };
+
+        const debounce = (func, wait) => {
+            let timeout;
+            return (...args) => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        };
+
         const parallaxEffect = () => {
             const handleMouseMove = (e) => {
                 const x = (e.clientX / width) - 0.5;
@@ -322,38 +329,21 @@ const Cube2Projects = ({ onBack }) => {
             return () => window.removeEventListener('mousemove', handleMouseMove);
         };
 
-        const addGlowEffect = () => {
-            particles.forEach(p => {
-                ctx.shadowColor = p.color;
-                ctx.shadowBlur = 20;
-            });
-        };
-
         createParticles();
         const animate = () => {
             drawParticles();
             drawLines();
-            addGlowEffect();
             requestAnimationFrame(animate);
         };
 
+        window.addEventListener('resize', debounce(handleResize, 100));
         parallaxEffect();
         animate();
-    }, [darkMode]);
 
-    useEffect(() => {
-        const handleLoad = () => {
-            const elements = document.querySelectorAll('.cube2-project-card');
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.classList.add('in-view');
-                }, index * 100);
-            });
+        return () => {
+            window.removeEventListener('resize', debounce(handleResize, 100));
         };
-
-        window.addEventListener('load', handleLoad);
-        return () => window.removeEventListener('load', handleLoad);
-    }, []);
+    }, [darkMode]);
 
     return (
         <div className={`cube2-project-showcase ${darkMode ? 'cube2-dark-mode' : 'cube2-light-mode'}`}>

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import './ProjectCard.css';
+import './ProjectCard1.css';
 import { Chart, registerables } from 'chart.js';
 import { Timeline } from 'vis-timeline/standalone';
 import { DataSet } from 'vis-data';
