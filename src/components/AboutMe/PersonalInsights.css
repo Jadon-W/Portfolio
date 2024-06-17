@@ -575,7 +575,7 @@
         padding: 8px;
         width: 60px; /* Make it a square */
         height: 60px; /* Make it a square */
-        bottom: 30px;
+        bottom: 15px;
     }
 
     .personal-insights-container .content-card {
@@ -686,7 +686,7 @@
         padding: 6px;
         width: 60px; /* Make it a square */
         height: 60px; /* Make it a square */
-        bottom: 30px;
+        bottom: 15px;
     }
 
     .personal-insights-container .content-card {
@@ -696,5 +696,44 @@
 
     .content-card p {
         white-space: normal; /* Ensure text wraps properly */
+    }
+}
+@media (max-width: 768px) {
+    .contact-item {
+        padding: 10px; /* Reduce padding */
+        font-size: 0.9rem; /* Adjust font size */
+    }
+
+    .contact-icon {
+        font-size: 1.5rem; /* Adjust icon size */
+    }
+
+    .contact-button {
+        padding: 8px 12px; /* Reduce button padding */
+        font-size: 0.85rem; /* Adjust button font size */
+    }
+
+    .personal-insights-container h2 {
+        margin-top: 20px; /* Add margin to move title down */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-item {
+        padding: 8px; /* Further reduce padding */
+        font-size: 0.75rem; /* Further adjust font size */
+    }
+
+    .contact-icon {
+        font-size: 1.2rem; /* Further adjust icon size */
+    }
+
+    .contact-button {
+        padding: 6px 10px; /* Further reduce button padding */
+        font-size: 0.75rem; /* Further adjust button font size */
+    }
+
+    .personal-insights-container h2 {
+        margin-top: 15px; /* Further adjust margin to move title down */
     }
 }

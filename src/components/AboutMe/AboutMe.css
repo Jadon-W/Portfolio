@@ -178,6 +178,32 @@ button:hover:after {
 }
 
 @media (max-width: 768px) {
+  .about-me-container {
+      overflow-y: scroll; /* Enable vertical scrolling */
+      height: 100vh; /* Ensure container fits within viewport */
+      scroll-snap-type: y mandatory; /* Enable scroll snapping */
+      -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+  }
+
+  .scroll-container {
+      height: 400vh; /* Total height for 4 sections */
+      display: flex; /* Use flexbox for vertical alignment */
+      flex-direction: column;
+  }
+
+  .section {
+      width: 100vw;
+      height: 100vh; /* Ensure each section takes up full viewport height */
+      flex-shrink: 0; /* Prevent sections from shrinking */
+      padding: 10px; /* Add padding for better touch interaction */
+      box-sizing: border-box;
+      scroll-snap-align: start; /* Ensure each section snaps to the start */
+  }
+
+  .navigation-dots {
+      bottom: 10px; /* Adjust placement */
+  }
+
   .dot {
       width: 10px;
       height: 10px;
@@ -187,10 +213,6 @@ button:hover:after {
       height: 2px;
   }
 
-  .section {
-      padding: 10px;
-  }
-
   button {
       padding: 8px 16px;
       font-size: 0.9rem;
@@ -198,6 +220,32 @@ button:hover:after {
 }
 
 @media (max-width: 480px) {
+  .about-me-container {
+      overflow-y: scroll; /* Enable vertical scrolling */
+      height: 100vh; /* Ensure container fits within viewport */
+      scroll-snap-type: y mandatory; /* Enable scroll snapping */
+      -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+  }
+
+  .scroll-container {
+      height: 400vh; /* Total height for 4 sections */
+      display: flex; /* Use flexbox for vertical alignment */
+      flex-direction: column;
+  }
+
+  .section {
+      width: 100vw;
+      height: 100vh; /* Ensure each section takes up full viewport height */
+      flex-shrink: 0; /* Prevent sections from shrinking */
+      padding: 8px; /* Add padding for better touch interaction */
+      box-sizing: border-box;
+      scroll-snap-align: start; /* Ensure each section snaps to the start */
+  }
+
+  .navigation-dots {
+      bottom: 10px; /* Adjust placement */
+  }
+
   .dot {
       width: 8px;
       height: 8px;
